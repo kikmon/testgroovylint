@@ -1,0 +1,18 @@
+{
+    "extends": "recommended-jenkinsfile",
+    "rules": {
+        "comments.ClassJavadoc": "off",
+        "formatting.Indentation": {
+            "spacesPerIndentLevel": 4,
+            "severity": "info"
+        },
+        "ImplicitReturnStatement": "error",
+        "DuplicateNumberLiteral": {
+            "ignoreNumbers": "-1, 0, 1"
+        },
+        "DuplicateStringLiteral": {
+            "ignoreStrings": "'', ' ', '0', '-1'"
+        },
+        "LineLength": "off"
+    }
+}
