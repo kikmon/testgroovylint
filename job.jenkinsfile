@@ -1,0 +1,45 @@
+
+pipeline {
+    agent none
+    parameters {
+        choice(
+            name: 'pill color',
+            choices: [
+                'red',
+                'blue'
+            ],
+            description: '')
+    }
+    options {
+        buildDiscarder(logRotator(daysToKeepStr: '7'))
+        timeout(time: 60, unit: 'MINUTES')
+    }
+
+    stages {
+        stage('initialize') {
+            steps {
+                script {
+                     currentBuild.displayName = "# ${env.BUILD_NUMBER}"
+                    var emptyString = ''
+                    var num1 = 0
+                    var num2 = 0
+                    println "${emptyString} ${num1} ${num2}"
+                }
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Always step'
+        }
+        success {
+            echo 'Job completed sucessfuly'
+        }
+        failure {
+            echo 'Job failed'
+        }
+        cleanup {
+            echo 'Running Cleanup'
+        }
+    }
+}
